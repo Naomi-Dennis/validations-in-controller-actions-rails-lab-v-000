@@ -8,7 +8,9 @@ class AuthorsController < ApplicationController
 
   def create
     @author = Author.create!(author_params)
-
+    if !@author.valid? 
+      render :edit 
+    end 
     redirect_to author_path(@author)
   end
 
